@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -31,3 +32,7 @@ mongoose
     console.error("Database connection error:", error.message);
     process.exit(1);
   });
+
+
+
+  
