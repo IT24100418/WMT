@@ -9,7 +9,7 @@ function HomePage() {
   const fetchItems = async () => {
     try {
       const { data } = await getItems();
-      setItems(data);
+      setItems(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Failed to fetch items", error);
     } finally {
@@ -46,7 +46,7 @@ function HomePage() {
         <p>No items available. Add a new item from the menu.</p>
       ) : (
         <div className="grid">
-          {items.map((item) => (
+          {Array.isArray(items) && items.map((item) => (
             <ItemCard key={item._id} item={item} onDelete={handleDelete} />
           ))}
         </div>
